@@ -1,14 +1,14 @@
 use piston_window::*;
 use piston_window::types::Color;
 
-use rand::{ rng, thread_rng, Rng };
+use rand::{ rng, Rng };
 
 use super::snake::{ Direction, Snake };
 use super::draw::{ draw_block, draw_rectangle };
 
-const FOOD_COLOR: Color = [255.0, 51.0, 149.0, 0.84];
-const BORDER_COLOR: Color = [255.0, 0.0, 42.0, 0.61];
-const GAMEOVER_COLOR: Color = [0.9, 0.0, 0.0, 0.5];
+const FOOD_COLOR: Color = [1.0, 0.0, 0.1647, 0.61];
+const BORDER_COLOR: Color = [0.2392, 0.5333, 0.4588, 1.0];
+const GAMEOVER_COLOR: Color = [0.9, 0.0, 0.0, 0.3];
 
 const MOVING_PERIOD: f64 = 0.1;
 const RESTART_TIME: f64 = 1.5;
@@ -55,7 +55,7 @@ impl Game {
             return;
         }
 
-        // self.update_snake(dir);
+        self.update_snake(dir);
     }
 
     pub fn draw(&self, con: &Context, g: &mut G2d) {
@@ -80,7 +80,7 @@ impl Game {
 
         if self.game_over {
             if self.waiting_time > RESTART_TIME {
-                // self.restart();
+                self.restart();
             }
             return;
         }
@@ -90,7 +90,7 @@ impl Game {
         }
 
         if self.waiting_time > MOVING_PERIOD {
-            // self.update_snake(None);
+            self.update_snake(None);
         }
     }
 

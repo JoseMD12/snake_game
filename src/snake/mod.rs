@@ -1,12 +1,11 @@
 use std::collections::LinkedList;
-use std::str;
-use piston_window::{ rectangle, Context, G2d };
+use piston_window::{ Context, G2d };
 use piston_window::types::Color;
 
 use super::draw::draw_block;
 
-const SNAKE_COLOR: Color = [144.0, 255.0, 149.0, 0.7];
-const SNAKE_HEAD_COLOR: Color = [137.0, 255.0, 149.0, 0.84];
+const SNAKE_COLOR: Color = [0.144, 0.255, 0.149, 0.7];
+const SNAKE_HEAD_COLOR: Color = [0.137, 0.255, 0.149, 0.84];
 
 #[derive(Copy, Clone, PartialEq)]
 pub enum Direction {
